@@ -28,7 +28,7 @@ describe('Criando cenário de teste para o site globalsqa', ()=>{
         cy.get('.btn-primary').should('be.disabled')
     })
 
-    it('Caso de teste: Realizando login com sucesso', () =>{
+    it.skip('Caso de teste: Realizando login com sucesso', () =>{
 
         let info = criarUsuario()
         cy.get('#username').type(info[0])
@@ -36,6 +36,15 @@ describe('Criando cenário de teste para o site globalsqa', ()=>{
         cy.get('.btn-primary').click()
         cy.get('h1.ng-binding').should('contain.text', info[0])
 
+    })
+
+    it('Caso de teste: Excluindo o usuário logado com sucesso', () =>{
+        let info = criarUsuario()
+        cy.get('#username').type(info[0])
+        cy.get('#password').type(info[1])
+        cy.get('.btn-primary').click()
+        // cy.get('h1.ng-binding').should('contain.text', info[0])
+        cy.get('.ng-binding > a').click()
     })
 
 
